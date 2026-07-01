@@ -109,11 +109,27 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1.6em;
 }
 
-h1 { font-size: 1.9em; border-bottom: 2px solid var(--color-border); }
-h2 { font-size: 1.55em; border-bottom: 1px solid var(--color-border); }
-h3 { font-size: 1.3em;  border-bottom: 1px solid var(--color-border-light); }
-h4 { font-size: 1.1em;  border-bottom: 1px solid var(--color-border-light); }
-h5, h6 { font-size: 1em; }
+h1 {
+  font-size: 1.9em;
+  border-bottom: 2px solid var(--color-border);
+}
+h2 {
+  font-size: 1.55em;
+  border-bottom: 1px solid var(--color-border);
+}
+h3 {
+  font-size: 1.3em;
+  border-bottom: 1px solid var(--color-border-light);
+  max-width: max-content;
+}
+h4 {
+  font-size: 1.1em;
+  border-bottom: 1px solid var(--color-border-light);
+  max-width: max-content;
+}
+h5, h6 {
+  font-size: 1em;
+}
 
 /* --------------------------------------------------------------------------
    Code & preformatted text
@@ -436,16 +452,12 @@ textarea { overflow-x: auto; }
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--color-text-muted);
-  position: relative;
 }
 
 #table-of-contents a:hover {
   color: var(--color-link-hover);
-  position: absolute;
-  z-index: 10;
-  white-space: nowrap;
   overflow: visible;
-  width: auto;
+  width: max-content;
   max-width: none;
   background: var(--color-bg);
   box-shadow: var(--shadow-md);
@@ -473,7 +485,6 @@ textarea { overflow-x: auto; }
     height: 100%;
     font-size: 0.85em;
     padding: 1.5em 0.5em;
-    overflow-y: auto;
     background: var(--color-bg-alt);
     border-right: 1px solid var(--color-border);
   }
