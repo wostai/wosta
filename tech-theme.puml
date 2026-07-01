@@ -1,0 +1,40 @@
+' =========================
+' Tech Theme (CSS-like)
+' =========================
+
+skinparam backgroundColor #ffffff
+skinparam ArrowColor #1a56b0
+skinparam ArrowThickness 1
+
+skinparam roundcorner 6
+skinparam shadowing false
+
+skinparam component {
+  BackgroundColor #f6f8fa
+  BorderColor #d7dce1
+  FontColor #1c2531
+}
+
+skinparam rectangle {
+  BackgroundColor #f6f8fa
+  BorderColor #d7dce1
+  FontColor #1c2531
+}
+
+skinparam database {
+  BackgroundColor #f3f4f6
+  BorderColor #1f4e8c
+  FontColor #1c2531
+}
+
+skinparam queue {
+  BackgroundColor #f6f8fa
+  BorderColor #1f4e8c
+  FontColor #1c2531
+}
+
+skinparam folder {
+  BackgroundColor #f6f8fa
+  BorderColor #d7dce1
+  FontColor #1c2531
+}
