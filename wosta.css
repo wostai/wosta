@@ -1,10 +1,4 @@
-/* ==========================================================================
-   Technical Documentation Theme
-   Modern, professional theme for Org-mode HTML export
-   ========================================================================== */
-
 :root {
-  /* Color palette — official, restrained blue/slate scheme */
   --color-bg:            #ffffff;
   --color-bg-alt:        #f6f8fa;
   --color-bg-code:       #f3f4f6;
@@ -15,7 +9,7 @@
   --color-text-muted:    #5b6675;
   --color-text-faint:    #97a0ab;
 
-  --color-primary:       #1f4e8c;   /* headline / brand blue */
+  --color-primary:       #1f4e8c;
   --color-primary-dark:  #16365f;
   --color-accent:        #0a66c2;
   --color-link:          #1a56b0;
@@ -36,7 +30,6 @@
   --content-max-width: 60em;
   --sidebar-width: 280px;
 
-  /* Spacing scale (base unit 4px) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -47,14 +40,19 @@
   --space-10: 40px;
 }
 
-/* --------------------------------------------------------------------------
-   Base layout
-   -------------------------------------------------------------------------- */
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  max-width: 1500px;
+}
+
+body {
+  overflow-x: hidden;
   color: var(--color-text);
   background: var(--color-bg);
   font-family: var(--font-sans);
@@ -62,16 +60,13 @@ body {
   line-height: 1.6;
 }
 
-#content {
-  max-width: var(--content-max-width);
-  margin: auto;
-}
-
+/* ===== Links ===== */
 a {
   color: var(--color-link);
   text-decoration: none;
   padding: var(--space-1);
   border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 a:hover {
@@ -79,62 +74,31 @@ a:hover {
   border-bottom-color: currentColor;
 }
 
-/* --------------------------------------------------------------------------
-   Headings & titles
-   -------------------------------------------------------------------------- */
-
-.title {
-  text-align: center;
-  margin: 0 0 0.2em;
-  font-size: 2.1em;
-  font-weight: 700;
-  color: var(--color-primary-dark);
-  letter-spacing: -0.01em;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  margin-top: 0;
-}
-
+/* ===== Headings ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;
   color: var(--color-primary-dark);
-  padding-left: 0;
-  padding-bottom: 0.25em;
-  margin-top: 1.6em;
+  margin: 0 0 0.45em 0;
+  line-height: 1.3;
 }
 
-h1 {
-  font-size: 1.9em;
-  border-bottom: 2px solid var(--color-border);
-}
-h2 {
-  font-size: 1.55em;
+h1 { font-size: 1.9em; }
+h2 { font-size: 1.55em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.1em; }
+h5, h6 { font-size: 1em; }
+
+h1, h2 {
   border-bottom: 1px solid var(--color-border);
-}
-h3 {
-  font-size: 1.3em;
-  border-bottom: 1px solid var(--color-border-light);
-  max-width: max-content;
-}
-h4 {
-  font-size: 1.1em;
-  border-bottom: 1px solid var(--color-border-light);
-  max-width: max-content;
-}
-h5, h6 {
-  font-size: 1em;
+  padding-bottom: 0.3em;
 }
 
-/* --------------------------------------------------------------------------
-   Code & preformatted text
-   -------------------------------------------------------------------------- */
+h3, h4 {
+  max-width: max-content;
+}
 
+/* ===== Code & Pre ===== */
 code, tt, kbd {
   font-family: var(--font-mono);
   font-size: 0.9em;
@@ -154,19 +118,25 @@ pre {
   border-left: 3px solid var(--color-primary);
   border-radius: var(--radius);
   padding: 0.8em 1em;
-  margin: 1em 0;
-  overflow: auto;
-  box-shadow: var(--shadow-sm);
+  margin: 0;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
-pre.src {
+/* Language labels for code blocks */
+.src {
   position: relative;
 }
 
-pre.src::before {
+.src::before {
   display: none;
   position: absolute;
   right: var(--space-3);
+  top: 0.5em;
   padding: var(--space-1) var(--space-2);
   font-size: 0.75em;
   color: var(--color-text-muted);
@@ -175,26 +145,25 @@ pre.src::before {
   border-radius: var(--radius);
 }
 
-pre.src:hover::before {
+.src:hover::before {
   display: inline;
 }
 
-/* Language labels (condensed — one rule instead of 60+ duplicated blocks) */
-pre.src-python::before      { content: "Python"; }
-pre.src-js::before          { content: "JavaScript"; }
-pre.src-html::before        { content: "HTML"; }
-pre.src-css::before         { content: "CSS"; }
-pre.src-sh::before,
-pre.src-shell::before,
-pre.src-bash::before        { content: "Shell"; }
-pre.src-sql::before         { content: "SQL"; }
-pre.src-emacs-lisp::before,
-pre.src-lisp::before         { content: "Lisp"; }
-pre.src-java::before        { content: "Java"; }
-pre.src-cpp::before          { content: "C++"; }
-pre.src-C::before            { content: "C"; }
-pre.src-yaml::before         { content: "YAML"; }
-pre.src-json::before         { content: "JSON"; }
+.src-python::before      { content: "Python"; }
+.src-js::before          { content: "JavaScript"; }
+.src-html::before        { content: "HTML"; }
+.src-css::before         { content: "CSS"; }
+.src-sh::before,
+.src-shell::before,
+.src-bash::before        { content: "Shell"; }
+.src-sql::before         { content: "SQL"; }
+.src-emacs-lisp::before,
+.src-lisp::before        { content: "Lisp"; }
+.src-java::before        { content: "Java"; }
+.src-cpp::before         { content: "C++"; }
+.src-C::before           { content: "C"; }
+.src-yaml::before        { content: "YAML"; }
+.src-json::before        { content: "JSON"; }
 
 .org-src-container {
   display: flex;
@@ -202,9 +171,7 @@ pre.src-json::before         { content: "JSON"; }
   margin: 1.25em 0;
 }
 
-.org-src-container pre { order: 1; }
-
-.org-src-container label.org-src-name {
+.org-src-name {
   order: 2;
   margin-top: 0.5em;
   text-align: center;
@@ -212,10 +179,7 @@ pre.src-json::before         { content: "JSON"; }
   color: var(--color-text-muted);
 }
 
-/* --------------------------------------------------------------------------
-   Blockquotes & callouts
-   -------------------------------------------------------------------------- */
-
+/* ===== Blockquote ===== */
 blockquote {
   margin: 1em 0;
   padding: 0.6em 1em;
@@ -225,32 +189,15 @@ blockquote {
   color: var(--color-text-muted);
 }
 
-.inlinetask {
-  padding: 0.8em 1em;
-  border: 1px solid var(--color-warning);
-  border-radius: var(--radius);
-  margin: 1em 0;
-  background: #fff8e6;
-}
-
-.fixme {
-  background: #fff3b0;
-  font-weight: 700;
-}
-
-/* --------------------------------------------------------------------------
-   Tables
-   -------------------------------------------------------------------------- */
-
+/* ===== Tables ===== */
 table {
   border-collapse: collapse;
   margin: 1em 0;
   font-size: 0.95em;
-  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
 }
-
-caption.t-above { caption-side: top; }
-caption.t-bottom { caption-side: bottom; }
 
 th, td {
   border: 1px solid var(--color-border);
@@ -264,63 +211,7 @@ th {
   font-weight: 600;
 }
 
-.org-right,  th.org-right,  td.org-right  { text-align: right; }
-.org-left,   th.org-left,   td.org-left   { text-align: left; }
-.org-center, th.org-center, td.org-center { text-align: center; }
-
-/* --------------------------------------------------------------------------
-   Org-specific semantic classes (todo/done/tags/timestamps)
-   -------------------------------------------------------------------------- */
-
-.todo, span.todo {
-  font-family: var(--font-mono);
-  font-size: 0.75em;
-  font-weight: 700;
-  color: #fff;
-  background: var(--color-todo);
-  border-radius: var(--radius);
-  padding: var(--space-1) var(--space-2);
-}
-
-.done, span.done {
-  font-family: var(--font-mono);
-  font-size: 0.75em;
-  font-weight: 700;
-  color: #fff;
-  background: var(--color-done);
-  border-radius: var(--radius);
-  padding: var(--space-1) var(--space-2);
-}
-
-.priority {
-  font-family: var(--font-mono);
-  color: var(--color-warning);
-}
-
-.tag {
-  background: var(--color-tag-bg);
-  color: var(--color-primary-dark);
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.75em;
-  border-radius: var(--radius);
-  padding: var(--space-1) var(--space-2);
-}
-
-.timestamp {
-  color: var(--color-text-faint);
-}
-
-.timestamp-kwd {
-  color: var(--color-accent);
-}
-
-.target { background-color: var(--color-primary-dark); }
-
-/* --------------------------------------------------------------------------
-   Definition lists (dt/dd) — dt highlighted as a labeled term
-   -------------------------------------------------------------------------- */
-
+/* ===== Definition Lists ===== */
 dl {
   margin: 1em 0;
 }
@@ -341,193 +232,7 @@ dd {
   color: var(--color-text);
 }
 
-/* --------------------------------------------------------------------------
-   Outline / heading level colors (org-level-N and outline-N share styling)
-   -------------------------------------------------------------------------- */
-
-.org-level-1, .org-outline-1 { color: var(--color-primary); }
-.org-level-2, .org-outline-2 { color: #8a5a00; }
-.org-level-3, .org-outline-3 { color: #6a3fb0; }
-.org-level-4, .org-outline-4 { color: #a83232; }
-.org-level-5, .org-outline-5 { color: var(--color-done); }
-.org-level-6, .org-outline-6 { color: #2c7a7b; }
-.org-level-7, .org-outline-7 { color: #a0459c; }
-.org-level-8, .org-outline-8 { color: #7a6a5f; }
-
-.org-todo { color: var(--color-todo); }
-.org-done { color: var(--color-done); font-weight: 700; }
-.org-headline-done { color: var(--color-text-faint); }
-.org-archived { color: var(--color-text-faint); }
-.org-tag { font-weight: 700; }
-.org-date { color: var(--color-accent); text-decoration: underline; }
-.org-link, .org-org-link { color: var(--color-link); text-decoration: underline; }
-.org-link-visited { color: #7a4fa0; text-decoration: underline; }
-.org-warning { color: var(--color-todo); font-weight: 700; }
-.org-code, .org-verbatim { color: var(--color-text-muted); }
-.org-table { color: var(--color-primary); }
-.org-formula { color: var(--color-todo); }
-.org-special-keyword, .org-drawer { color: var(--color-accent); }
-.org-scheduled-today { color: var(--color-done); }
-.org-scheduled-previously { color: var(--color-todo); }
-.org-upcoming-deadline { color: var(--color-todo); }
-
-/* --------------------------------------------------------------------------
-   Syntax highlighting (font-lock faces, consolidated)
-   -------------------------------------------------------------------------- */
-
-.org-comment, .org-comment-delimiter { color: #8a8f98; font-style: italic; }
-.org-string, .org-doc { color: #a83a5c; }
-.org-keyword { color: #7a3fb0; }
-.org-builtin, .org-preprocessor { color: #b0459c; }
-.org-constant { color: var(--color-accent); }
-.org-type { color: var(--color-done); }
-.org-function-name { color: var(--color-link); }
-.org-variable-name { color: #8a5a00; }
-.org-negation-char, .org-regexp-grouping-backslash,
-.org-regexp-grouping-construct { font-weight: 700; }
-
-.org-highlight, .org-lazy-highlight { background-color: #d7f0d7; }
-.org-match, .org-secondary-selection { background-color: #fff3a0; }
-.org-region { background-color: #ffe9a8; }
-.org-isearch, .org-query-replace { color: #e6f2ff; background-color: #b03fb0; }
-
-/* --------------------------------------------------------------------------
-   Footnotes / equations
-   -------------------------------------------------------------------------- */
-
-.footpara { display: inline; }
-.footdef { margin-bottom: 1em; }
-
-.figure { padding: 1em; }
-.figure p { text-align: center; }
-
-.equation-container {
-  display: table;
-  width: 100%;
-  text-align: center;
-}
-.equation { vertical-align: middle; }
-.equation-label {
-  display: table-cell;
-  text-align: right;
-  vertical-align: middle;
-}
-
-/* --------------------------------------------------------------------------
-   Utility
-   -------------------------------------------------------------------------- */
-
-.underline, span.underline, .org-underline { text-decoration: underline; }
-.org-bold { font-weight: 700; }
-.org-italic { font-style: italic; }
-.org-bold-italic { font-weight: 700; font-style: italic; }
-p.verse { margin-left: 3%; }
-textarea { overflow-x: auto; }
-.linenr { font-size: smaller; color: var(--color-text-faint); }
-
-/* --------------------------------------------------------------------------
-   Table of contents (responsive sidebar)
-   -------------------------------------------------------------------------- */
-
-#table-of-contents ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-#table-of-contents ul ul {
-  padding-left: var(--space-4);
-}
-
-#table-of-contents li {
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
-  position: relative;
-}
-
-#table-of-contents a {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--color-text-muted);
-}
-
-#table-of-contents a:hover {
-  color: var(--color-link-hover);
-  overflow: visible;
-  width: max-content;
-  max-width: none;
-  background: var(--color-bg);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--radius);
-}
-
-@media screen and (max-width: 800px) {
-  #table-of-contents {
-    margin: 1em 0;
-    padding: 0.5em;
-  }
-
-  #content {
-    margin-top: 2em;
-    padding: 1.5em;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  #table-of-contents {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: var(--sidebar-width);
-    height: 100%;
-    font-size: 0.85em;
-    padding: 1.5em 0.5em;
-    background: var(--color-bg-alt);
-    border-right: 1px solid var(--color-border);
-  }
-
-  #content {
-    margin-left: var(--sidebar-width);
-    margin-top: 2em;
-    padding: 2em 3em;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Header / footer bar
-   -------------------------------------------------------------------------- */
-
-div.title {
-  margin: -1em -1em 1em;
-  font-size: 1.6em;
-  font-weight: 700;
-  background: var(--color-primary-dark);
-  color: #fff;
-  padding: 0.9em 1em;
-  letter-spacing: 0.02em;
-  text-align: left;
-}
-
-#org-div-home-and-up {
-  text-align: right;
-  font-size: 0.8em;
-  white-space: nowrap;
-  background: var(--color-primary-dark);
-  color: #fff;
-  padding: 0.4em 1em;
-}
-
-#org-div-home-and-up a {
-  color: #fff;
-}
-
-#org-div-home-and-up a:hover {
-  color: #cfe0f7;
-}
-
+/* ===== Footer/Header ===== */
 #postamble {
   text-align: right;
   font-size: 0.8em;
@@ -537,23 +242,95 @@ div.title {
   color: var(--color-text-faint);
 }
 
-#postamble a { color: var(--color-accent); }
-#postamble p, #preamble p { font-size: 0.9em; margin: 0.2em; }
-
-/* --------------------------------------------------------------------------
-   Sidebar callout box
-   -------------------------------------------------------------------------- */
-
-.sidebar {
-  float: right;
-  width: 22em;
-  margin: 2em 0 2em 2em;
-  padding: 1em;
-  background: var(--color-primary-dark);
-  color: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
+#postamble a {
+  color: var(--color-accent);
 }
 
-.sidebar a { border: none; color: #cfe0f7; }
-.sidebar a:hover { color: #fff; }
+#postamble p,
+#preamble p {
+  font-size: 0.9em;
+  margin: 0.2em;
+}
+
+/* ===== Layout ===== */
+.content {
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* ===== Table of Contents ===== */
+#table-of-contents ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#table-of-contents ul ul {
+  padding-left: var(--space-4);
+}
+
+#table-of-contents a {
+  display: block;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+#table-of-contents a:hover {
+  color: var(--color-link-hover);
+}
+
+/* ===== Responsive Grid Layout ===== */
+@media (min-width: 800px) {
+  .content {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    column-gap: 2.5em;
+    align-items: start; /* Critical for sticky positioning */
+    padding: 0;
+  }
+
+  .content > * {
+    min-width: 0;
+  }
+
+  #table-of-contents {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: fit-content;
+    max-height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 1.5em 1em 12em;
+    font-size: 0.85em;
+    background: var(--color-bg-alt);
+    border-right: 1px solid var(--color-border);
+    min-width: 0;
+  }
+
+  .content > *:not(#table-of-contents) {
+    grid-column: 2;
+    width: 100%;
+    max-width: 1020px;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 799px) {
+  #table-of-contents {
+    display: none;
+  }
+  
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.35em; }
+  h3 { font-size: 1.15em; }
+}

@@ -20,35 +20,7 @@ arrow {
     LineThickness: 1
 }
 
-rectangle {
-    BackgroundColor: BG_NODE_COLOR
-    LineColor: BORDER_COLOR
-    LineThickness: 1
-    RoundCorner: 6
-}
-
-database {
-    BackgroundColor: BG_NODE_COLOR
-    LineColor: BORDER_COLOR
-    LineThickness: 1
-    RoundCorner: 6
-}
-
-queue {
-    BackgroundColor: BG_NODE_COLOR
-    LineColor: BORDER_COLOR
-    LineThickness: 1
-    RoundCorner: 6
-}
-
-folder {
-    BackgroundColor: BG_NODE_COLOR
-    LineColor: BORDER_COLOR
-    LineThickness: 1
-    RoundCorner: 6
-}
-
-participant {
+rectangle, database, queue, folder, participant {
     BackgroundColor: BG_NODE_COLOR
     LineColor: BORDER_COLOR
     LineThickness: 1
@@ -73,6 +45,37 @@ groupHeader {
     BackgroundColor: BG_NODE_COLOR
     LineColor: BORDER_PALE_COLOR
     LineThickness: 2
+}
+
+activity {
+    BackgroundColor: BG_NODE_COLOR
+    LineColor: BORDER_COLOR
+    LineThickness: 1
+    RoundCorner: 6
+}
+
+condition {
+    BackgroundColor: BG_NODE_COLOR
+    LineColor: BORDER_COLOR
+    LineThickness: 1
+}
+
+partition {
+    BackgroundColor: BG_PALE_COLOR
+    LineColor: BORDER_PALE_COLOR
+    LineThickness: 2
+    HeaderBackgroundColor: BG_NODE_COLOR
+    HeaderLineColor: BORDER_PALE_COLOR
+}
+
+start {
+    BackgroundColor: #1a56b0
+    LineColor: #1a56b0
+}
+
+stop {
+    BackgroundColor: #e65100
+    LineColor: #e65100
 }
 
 </style>
