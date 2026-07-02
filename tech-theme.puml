@@ -1,6 +1,8 @@
 <style>
 !define BORDER_COLOR #1f4e8c
 !define BG_NODE_COLOR #f6f8fa
+!define BG_CONTRAST_COLOR #fff3e0
+!define BORDER_CONTRAST_COLOR #e65100
 
 diagram {
     BackgroundColor: #ffffff
@@ -40,6 +42,20 @@ queue {
 folder {
     BackgroundColor: BG_NODE_COLOR
     LineColor: BORDER_COLOR
+    LineThickness: 1
+    RoundCorner: 6
+}
+
+participant {
+    BackgroundColor: BG_NODE_COLOR
+    LineColor: BORDER_COLOR
+    LineThickness: 1
+    RoundCorner: 6
+}
+
+note {
+    BackgroundColor: BG_CONTRAST_COLOR
+    LineColor: BORDER_CONTRAST_COLOR
     LineThickness: 1
     RoundCorner: 6
 }
