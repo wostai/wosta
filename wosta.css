@@ -286,23 +286,15 @@ dd {
 /* ===== Responsive Grid Layout ===== */
 @media (min-width: 800px) {
   .content {
-    display: grid;
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-    column-gap: 2.5em;
-    align-items: start; /* Critical for sticky positioning */
+    position: relative;
     padding: 0;
   }
-
-  .content > * {
-    min-width: 0;
-  }
-
+  
   #table-of-contents {
-    grid-column: 1;
-    grid-row: 1 / -1;
-    position: sticky;
+    position: fixed;
     top: 0;
-    align-self: start;
+    left: 0;
+    width: var(--sidebar-width);
     height: fit-content;
     max-height: 100vh;
     overflow-y: auto;
@@ -311,14 +303,13 @@ dd {
     font-size: 0.85em;
     background: var(--color-bg-alt);
     border-right: 1px solid var(--color-border);
-    min-width: 0;
   }
-
+  
   .content > *:not(#table-of-contents) {
-    grid-column: 2;
-    width: 100%;
+    margin-left: calc(var(--sidebar-width) + 2.5em);
     max-width: 1020px;
     min-width: 0;
+    width: 100%;
     overflow-wrap: break-word;
     word-wrap: break-word;
   }
