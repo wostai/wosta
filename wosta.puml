@@ -41,6 +41,13 @@ group {
     RoundCorner: 3
 }
 
+box {
+    BackgroundColor: BG_PALE_COLOR
+    LineColor: BORDER_PALE_COLOR
+    LineThickness: 2
+    RoundCorner: 3
+}
+
 groupHeader {
     BackgroundColor: BG_NODE_COLOR
     LineColor: BORDER_PALE_COLOR

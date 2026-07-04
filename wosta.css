@@ -84,12 +84,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 1.9em; }
-h2 { font-size: 1.55em; }
-h3 { font-size: 1.3em; }
-h4 { font-size: 1.1em; }
-h5, h6 { font-size: 1em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.55em; }
+h4 { font-size: 1.3em; }
+h5, h6 { font-size: 1.1em; }
 
-h1, h2 {
+h1, h2, h3, h4 {
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.3em;
 }
@@ -333,4 +333,14 @@ dd {
   h1 { font-size: 1.6em; }
   h2 { font-size: 1.35em; }
   h3 { font-size: 1.15em; }
+}
+
+/* ===== Print Adjustments ===== */
+@media print {
+  .content {
+    display: block;
+  }
+  #table-of-contents {
+    display: none;
+  }
 }
