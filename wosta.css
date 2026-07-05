@@ -296,6 +296,7 @@ dd {
     left: 0;
     width: var(--sidebar-width);
     height: fit-content;
+    min-height: 100vh;
     max-height: 100vh;
     overflow-y: auto;
     box-sizing: border-box;
